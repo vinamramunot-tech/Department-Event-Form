@@ -25,19 +25,18 @@ function Form() {
 
   return (
     <form onSubmit = {handleSubmit(onSubmit)}>
+      
+      <fieldset> 
+      <legend>Food Plans</legend>  
       <label htmlFor = "food_plan">Food Plans </label>
       <input name = 'food_plan' id = "food_plan" type = 'Text' ref = {register}/> <br></br>
 
       <label htmlFor = "who_pays">Who Pays </label>
       <input name = "who_pays" id = "who_pays" type = 'Text' ref = {register}/><br></br>
+      </fieldset>
 
-      {/* <input type="Text" id="acm" name="acm" ref = {register}/> 
-      <label htmlFor="acm"> ACM</label><br></br>
-      <input type="Text" id="dept" name="dept" ref = {register}/>
-      <label htmlFor="dept"> DEPT</label><br></br>
-      <input type="Text" id="students" name="students" ref = {register}/> 
-      <label htmlFor="students"> STUDENTS</label><br></br> */}
-      
+      <fieldset> 
+      <legend>Event Costs</legend> 
       <label htmlFor = "event_costs">Event Costs </label>
       <input name = "event_costs"  id = "event_costs" type = 'Number' ref = {register}/><br></br>
 
@@ -52,7 +51,10 @@ function Form() {
 
       <label htmlFor = "entry_rules">What Are The Rules For Entry </label>
       <input name = "entry_rules" id = "entry_rules" type = 'Text' ref = {register}/><br></br>
+      </fieldset>
 
+      <fieldset> 
+      <legend>Timelines</legend> 
       <label htmlFor = "timeline">Timelines </label>
       <input name = "timeline" id = "timeline" type = 'Text' ref = {register}/> <br></br>
 
@@ -64,7 +66,10 @@ function Form() {
 
       <label htmlFor = "fundraise">Fundraising </label>
       <input name = "fundraise" id = "fundraise" type = 'Text' ref = {register}/><br></br>
+      </fieldset>
 
+      <fieldset> 
+      <legend>Advertising</legend> 
       <label htmlFor = "advert">Advertising </label>
       <input name = "advert" id = "advert" type = 'Text' ref = {register}/> <br></br>
 
@@ -73,7 +78,10 @@ function Form() {
 
       <label htmlFor = "pro_photos">Getting Professional Photos </label>
       <input name = "pro_photos" id = "pro_photos" type = 'Text' ref = {register}/><br></br>
+      </fieldset>
 
+      <fieldset> 
+      <legend>Coaching</legend> 
       <label htmlFor = "coach">Coaching </label>
       <input name = "coach" id = "coach" type = 'Text' ref = {register}/> <br></br>
 
@@ -82,8 +90,11 @@ function Form() {
 
       <label htmlFor = "coach_num">How Many Coaches </label>
       <input name = "coach_num" id = "coach_num" type = 'Number' ref = {register}/><br></br>
+      </fieldset>
 
-      <label htmlFor = "pre_comp">Pre-competition </label>
+      <fieldset> 
+      <legend>Pre-Competition</legend> 
+      <label htmlFor = "pre_comp">Pre-Competition </label>
       <input name = "pre_comp" id = "pre_comp" type = 'Text' ref = {register}/> <br></br>
 
       <label htmlFor = "workshop">Workshops </label>
@@ -94,8 +105,10 @@ function Form() {
 
       <label htmlFor = "club_lectures">Club Sponsored Lectures </label>
       <input name = "club_lectures" id = "club_lectures" type = 'Text' ref = {register}/><br></br>
+      </fieldset>
 
-      <input type = 'submit' /> submit form
+
+      <input type = 'button' value = 'Download' id = 'bttn' />
 
     </form>
   );
