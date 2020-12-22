@@ -3,6 +3,7 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+/* @import "~bootstrap/scss/bootstrap.css"; */
 
 body {
   position: relative;
@@ -19,6 +20,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+input{
+  float: right;
+}
+
+input#bttn {
+  float: none;
+  display: block;
+  margin: 0 auto;
 }
 
 h2 {
