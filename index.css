@@ -1,0 +1,9 @@
+body {
+    text-align: center;
+    max-width: 500px;
+}
+
+form {
+    border: 2px solid black;
+    display: inline-block;
+}
