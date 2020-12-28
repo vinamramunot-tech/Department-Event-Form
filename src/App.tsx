@@ -1,13 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { createStyles, makeStyles, TextField, Theme, borders } from '@material-ui/core';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: '25ch',
+      },
+    },
+  })
+);
 
 function Form() {
-  const { register, handleSubmit } = useForm();
+  const classes = useStyles();
 
-  const onSubmit = (data: JSON) => {
-    console.log(data);
-
+  const downloadReport = (data: JSON) => {
     const filename = 'export.json';
     const contentType = 'application/json;charset=utf-8;';
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
@@ -28,125 +37,44 @@ function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <fieldset>
-        <legend>Food Plans</legend>
-        <label htmlFor="food_plan">Food Plans </label>
-        <input
-          name="food_plan"
-          id="food_plan"
-          type="Text"
-          ref={register}
-        />{' '}
-        <br />
-        <label htmlFor="who_pays">Who Pays </label>
-        <input name="who_pays" id="who_pays" type="Text" ref={register} />
-        <br />
-      </fieldset>
-
-      <fieldset>
-        <legend>Event Costs</legend>
-        <label htmlFor="event_costs">Event Costs </label>
-        <input
-          name="event_costs"
-          id="event_costs"
+    <form className={classes.root} onSubmit={downloadReport}>
+      <div>
+        <TextField id="foodPlan" label="Food Plan" />
+        <TextField id="whoPaying" label="Who Pays" />
+      </div>
+      <div>
+        <TextField id="eventCosts" label="Event costs" type="Number" />
+        <TextField id="numOfStudents" label="How many students" type="Number" />
+        <TextField id="teamDecision" label="What decides the teams" />
+        <TextField id="numOfTeams" label="How many teams" type="Number" />
+        <TextField id="entryRules" label="What are the rules for entry" />
+      </div>
+      <div>
+        <TextField id="timeline" label="Timelines" />
+        <TextField id="whenHandled" label="When Should Things Be Handled" />
+        <TextField id="deadline" label="Deadline" />
+        <TextField id="fundraise" label="Fundraising" />
+      </div>
+      <div>
+        <TextField id="advertising" label="Advertising" />
+        <TextField id="howToAdvert" label="How to Advertise" />
+        <TextField id="proPhotos" label="Getting professional photos" />
+      </div>
+      <div>
+        <TextField id="coach" label="Coaching" />
+        <TextField id="whoCoaches" label="Who Coaches" />
+        <TextField
+          id="numberOfCoaches"
+          label="How many Coaches"
           type="Number"
-          ref={register}
         />
-        <br />
-
-        <label htmlFor="many_students">How Many Students </label>
-        <input
-          name="many_students"
-          id="many_students"
-          type="Number"
-          ref={register}
-        />
-        <br />
-
-        <label htmlFor="team_decision">What Decides The Teams </label>
-        <input
-          name="team_decision"
-          id="team_decision"
-          type="Text"
-          ref={register}
-        />
-        <br />
-
-        <label htmlFor="many_teams">How Many Teams </label>
-        <input name="many_teams" id="many_teams" type="Number" ref={register} />
-        <br />
-
-        <label htmlFor="entry_rules">What Are The Rules For Entry </label>
-        <input name="entry_rules" id="entry_rules" type="Text" ref={register} />
-        <br />
-      </fieldset>
-
-      <fieldset>
-        <legend>Timelines</legend>
-        <label htmlFor="timeline">Timelines </label>
-        <input name="timeline" id="timeline" type="Text" ref={register} />{' '}
-        <br />
-        <label htmlFor="when_handled">When Should Things Be Handled </label>
-        <input
-          name="when_handled"
-          id="when_handled"
-          type="Text"
-          ref={register}
-        />
-        <br />
-        <label htmlFor="deadline">Deadlines </label>
-        <input name="deadline" id="deadline" type="Text" ref={register} />
-        <br />
-        <label htmlFor="fundraise">Fundraising </label>
-        <input name="fundraise" id="fundraise" type="Text" ref={register} />
-        <br />
-      </fieldset>
-
-      <fieldset>
-        <legend>Advertising</legend>
-        <label htmlFor="advert">Advertising </label>
-        <input name="advert" id="advert" type="Text" ref={register} /> <br />
-        <label htmlFor="how_advert">How To Advertise </label>
-        <input name="how_advert" id="how_advert" type="Text" ref={register} />
-        <br />
-        <label htmlFor="pro_photos">Getting Professional Photos </label>
-        <input name="pro_photos" id="pro_photos" type="Text" ref={register} />
-        <br />
-      </fieldset>
-
-      <fieldset>
-        <legend>Coaching</legend>
-        <label htmlFor="coach">Coaching </label>
-        <input name="coach" id="coach" type="Text" ref={register} /> <br />
-        <label htmlFor="who_coach">Who Coaches </label>
-        <input name="who_coach" id="who_coach" type="Text" ref={register} />
-        <br />
-        <label htmlFor="coach_num">How Many Coaches </label>
-        <input name="coach_num" id="coach_num" type="Number" ref={register} />
-        <br />
-      </fieldset>
-
-      <fieldset>
-        <legend>Pre-Competition</legend>
-        <label htmlFor="pre_comp">Pre-Competition </label>
-        <input name="pre_comp" id="pre_comp" type="Text" ref={register} />{' '}
-        <br />
-        <label htmlFor="workshop">Workshops </label>
-        <input name="workshop" id="workshop" type="Text" ref={register} />
-        <br />
-        <label htmlFor="training">Training </label>
-        <input name="training" id="training" type="Text" ref={register} />
-        <br />
-        <label htmlFor="club_lectures">Club Sponsored Lectures </label>
-        <input
-          name="club_lectures"
-          id="club_lectures"
-          type="Text"
-          ref={register}
-        />
-        <br />
-      </fieldset>
+      </div>
+      <div>
+        <TextField id="preComp" label="Pre Competition" />
+        <TextField id="workshop" label="Workshops" />
+        <TextField id="training" label="Training" />
+        <TextField id="clubLectures" label="Club Sponsored Lectures" />
+      </div>
       <input type="submit" value="Download" id="bttn" />
     </form>
   );
