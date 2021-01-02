@@ -3,25 +3,28 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
-/* @import "~bootstrap/scss/bootstrap.css"; */
 
 body {
   position: relative;
-  color: white;
   height: 100vh;
-  background: linear-gradient(
-    200.96deg,
-    #fedc2a -29.09%,
-    #dd5789 51.77%,
-    #7a2c9e 129.35%
-  );
+  background-color: #5a48a7;
   font-family: 'Noto Sans JP', sans-serif;
   overflow-y: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: scroll;
 }
 
+form > div {
+  border: 1px solid black;
+  margin: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
 
 input{
   float: right;
@@ -31,14 +34,6 @@ input#bttn {
   float: none;
   display: block;
   margin: 0 auto;
-}
-
-h2 {
-  margin: 0;
-  font-size: 2.25rem;
-  font-weight: bold;
-  letter-spacing: -0.025em;
-  color: #fff;
 }
 
 button {
@@ -76,11 +71,4 @@ a:hover {
   opacity: 1;
   text-decoration: none;
   cursor: pointer;
-}
-
-.Hello {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
 }

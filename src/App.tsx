@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { createStyles, makeStyles, TextField, Theme, borders } from '@material-ui/core';
+import { createStyles, makeStyles, TextField, Theme } from '@material-ui/core';
+import { purple } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -9,38 +10,63 @@ const useStyles = makeStyles((theme: Theme) =>
         margin: theme.spacing(1),
         width: '25ch',
       },
+      color: 'white',
     },
   })
 );
 
 function Form() {
+  const [whoPaysForFood, setWhoPaysForFood] = useState('');
+  const [whereIsFoodComingFrom, setWhereIsFoodComingFrom] = useState('');
+  const [numberOfStudents, setNumberOfStudents] = useState(0);
+  const [numberOfTeams, setNumberOfTeams] = useState(0);
+  const [rulesForEntry, setRulesForEntry] = useState('');
+  const [deadline, setDeadline] = useState('');
+  const [advertisement, setAdvertisementPlan] = useState('');
+  const [coach, setCoach] = useState('');
+  const [numberOfCoaches, setNumberOfCoaches] = useState('');
+  const [workshops, setWorkshops] = useState('');
+  const [training, setTraining] = useState('');
+  const [clubSponsoredLectures, setClubSponsoredLectures] = useState('');
+
   const classes = useStyles();
 
-  const downloadReport = (data: JSON) => {
-    const filename = 'export.json';
-    const contentType = 'application/json;charset=utf-8;';
-    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-      const blob = new Blob(
-        [decodeURIComponent(encodeURI(JSON.stringify(data)))],
-        { type: contentType }
-      );
-      navigator.msSaveOrOpenBlob(blob, filename);
-    } else {
-      const a = document.createElement('a');
-      a.download = filename;
-      a.href = `data:${contentType},${encodeURIComponent(
-        JSON.stringify(data, null, 1)
-      )}`;
-      a.target = '_blank';
-      a.click();
-    }
+  const downloadReport = (event: FormEvent) => {
+    event.preventDefault();
+    
+    // const data = null;
+    // const filename = 'export.json';
+    // const contentType = 'application/json;charset=utf-8;';
+    // if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+    //   const blob = new Blob(
+    //     [decodeURIComponent(encodeURI(JSON.stringify(data)))],
+    //     { type: contentType }
+    //   );
+    //   navigator.msSaveOrOpenBlob(blob, filename);
+    // } else {
+    //   const a = document.createElement('a');
+    //   a.download = filename;
+    //   a.href = `data:${contentType},${encodeURIComponent(
+    //     JSON.stringify(data, null, 1)
+    //   )}`;
+    //   a.target = '_blank';
+    //   a.click();
+    // }
   };
 
   return (
     <form className={classes.root} onSubmit={downloadReport}>
       <div>
-        <TextField id="foodPlan" label="Food Plan" />
-        <TextField id="whoPaying" label="Who Pays" />
+        <TextField
+          id="whereIsFoodComingFrom"
+          label="Where is Food Coming From?"
+          onChange={(e) => setWhereIsFoodComingFrom(e.target.value)}
+        />
+        <TextField
+          id="whoPaying"
+          label="Who Pays"
+          onChange={(e) => setWhoPaysForFood(e.target.value)}
+        />
       </div>
       <div>
         <TextField id="eventCosts" label="Event costs" type="Number" />
