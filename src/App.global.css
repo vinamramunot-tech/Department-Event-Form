@@ -1,11 +1,11 @@
-/*
- * @NOTE: Prepend a `~` to css file paths that are in your node_modules
- *        See https://github.com/webpack-contrib/sass-loader#imports
- */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import '~antd/dist/antd.css';
 
 body {
   background-color: #F5F5F5;
-  justify-content: center;
-  align-items: center;
+}
+
+form {
+  display: block;
+  align-self: center;
+  align-items: flex-start;
 }

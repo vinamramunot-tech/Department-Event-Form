@@ -49,7 +49,7 @@ const FormDiv = () => {
       >
         <Input />
       </Form.Item>
-
+      <br />
       <Form.Item
         label="Password"
         name="password"
@@ -60,11 +60,7 @@ const FormDiv = () => {
           },
         ]}
       >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
+        <Input />
       </Form.Item>
 
       <Form.Item {...tailLayout}>
