@@ -5,70 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
 body {
-  position: relative;
-  height: 100vh;
-  background-color: #5a48a7;
-  font-family: 'Noto Sans JP', sans-serif;
-  overflow-y: hidden;
-  display: flex;
+  background-color: #F5F5F5;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
-}
-
-form > div {
-  border: 1px solid black;
-  margin: 10px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-input{
-  float: right;
-}
-
-input#bttn {
-  float: none;
-  display: block;
-  margin: 0 auto;
-}
-
-button {
-  background-color: white;
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 10px;
-  border: none;
-  appearance: none;
-  font-size: 1.3rem;
-  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
-    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
-  transition: transform ease-in 0.1s;
-}
-
-button:hover {
-  transform: scale(1.1);
-}
-
-p {
-  font-size: 24px;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  color: white;
-  opacity: 0.75;
-  text-decoration: none;
-}
-
-a:hover {
-  opacity: 1;
-  text-decoration: none;
-  cursor: pointer;
 }

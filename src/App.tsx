@@ -1,38 +1,51 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Form, Input, Button, Checkbox } from 'antd';
 
-function FormDiv() {
+const layout = {
+  labelCol: {
+    span: 8,
+  },
+  wrapperCol: {
+    span: 16,
+  },
+};
+const tailLayout = {
+  wrapperCol: {
+    offset: 2,
+    span: 16,
+  },
+};
 
-  const layout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
+const FormDiv = () => {
+  const onFinish = (values: any) => {
+    console.log('Success:', values);
   };
-  const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
   };
-  
-  const Demo = () => {
-    const onFinish = (values: any) => {
-      console.log('Success:', values);
-    };
-  
-    const onFinishFailed = (errorInfo: any) => {
-      console.log('Failed:', errorInfo);
-    };
 
   return (
     <Form
       {...layout}
       name="basic"
-      initialValues={{ remember: true }}
+      initialValues={{
+        remember: true,
+      }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
         label="Username"
         name="username"
-        rules={[{ required: true, message: 'Please input your username!' }]}
+        rules={[
+          {
+            required: true,
+            message: 'Please input your username!',
+          },
+        ]}
       >
         <Input />
       </Form.Item>
@@ -40,7 +53,12 @@ function FormDiv() {
       <Form.Item
         label="Password"
         name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
+        rules={[
+          {
+            required: true,
+            message: 'Please input your password!',
+          },
+        ]}
       >
         <Input.Password />
       </Form.Item>
@@ -56,7 +74,7 @@ function FormDiv() {
       </Form.Item>
     </Form>
   );
-}
+};
 
 export default function App() {
   return (
