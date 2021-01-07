@@ -23,6 +23,17 @@ const tailLayout = {
   },
 };
 
+const RadioSelectForMeals = () => {
+  return (
+    <Select placeholder="Select an option">
+      <Select.Option value="noMeal">No Meal</Select.Option>
+      <Select.Option value="department">Department</Select.Option>
+      <Select.Option value="ACM">ACM</Select.Option>
+      <Select.Option value="self">Self</Select.Option>
+    </Select>
+  );
+};
+
 const FormDiv = () => {
   const [requiredProp, setRequiredProp] = useState(true);
   const [DisabledProp, setDisabledProp] = useState(true);
@@ -70,24 +81,14 @@ const FormDiv = () => {
           },
         ]}
       >
-        <Select placeholder="Select an option">
-          <Select.Option value="noMeal">No Meal</Select.Option>
-          <Select.Option value="department">Department</Select.Option>
-          <Select.Option value="ACM">ACM</Select.Option>
-          <Select.Option value="self">Self</Select.Option>
-        </Select>
+        <RadioSelectForMeals />
       </Form.Item>
 
       <Form.Item
         label="Who covered the second Meal"
         name="Who payed for the second meal?"
       >
-        <Select placeholder="Select an option">
-          <Select.Option value="No meal">No Meal</Select.Option>
-          <Select.Option value="department">Department</Select.Option>
-          <Select.Option value="ACM">ACM</Select.Option>
-          <Select.Option value="self">Self</Select.Option>
-        </Select>
+        <RadioSelectForMeals />
       </Form.Item>
       <Form.Item
         label="Number of Students"
