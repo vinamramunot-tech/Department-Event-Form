@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/jsx-no-undef */
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Form, Input, Button, Select, InputNumber, Radio } from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio';
@@ -23,8 +23,13 @@ const tailLayout = {
 };
 
 const FormDiv = () => {
+  const [DisabledProp, setDisabledProp] = useState(true);
   const teamActivityOrNot = (e: RadioChangeEvent) => {
-    
+    if (e.target.value === 'true') {
+      setDisabledProp(false);
+    } else {
+      setDisabledProp(true);
+    }
   };
   const onFinish = (values: unknown) => {
     console.log('Success:', values);
@@ -115,10 +120,9 @@ const FormDiv = () => {
         ]}
       >
         <InputNumber
-          id="numOfTeams"
           min={1}
           max={100}
-          disabled
+          disabled={DisabledProp}
           defaultValue={1}
         />
       </Form.Item>
