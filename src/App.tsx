@@ -1,8 +1,10 @@
-/* eslint-disable react/jsx-no-undef */
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-no-undef */
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, InputNumber, Radio } from 'antd';
+import { RadioChangeEvent } from 'antd/lib/radio';
 
 const layout = {
   labelCol: {
@@ -21,11 +23,14 @@ const tailLayout = {
 };
 
 const FormDiv = () => {
-  const onFinish = (values: any) => {
+  const teamActivityOrNot = (e: RadioChangeEvent) => {
+    
+  };
+  const onFinish = (values: unknown) => {
     console.log('Success:', values);
   };
 
-  const onFinishFailed = (errorInfo: any) => {
+  const onFinishFailed = (errorInfo: unknown) => {
     console.log('Failed:', errorInfo);
   };
 
@@ -68,22 +73,54 @@ const FormDiv = () => {
       >
         <Select placeholder="Select an option">
           <Option value="No meal">No Meal</Option>
+          <Option value="department">Department</Option>
           <Option value="ACM">ACM</Option>
           <Option value="self">Self</Option>
         </Select>
       </Form.Item>
-      <br />
       <Form.Item
-        label="Password"
-        name="password"
+        label="Number of Students"
+        name="numOfStudents"
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
           },
         ]}
       >
-        <Input />
+        <InputNumber />
+      </Form.Item>
+
+      <Form.Item
+        label="Is this a team activity?"
+        name="team"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Radio.Group onChange={teamActivityOrNot}>
+          <Radio value="true">true</Radio>
+          <Radio value="false">false</Radio>
+        </Radio.Group>
+      </Form.Item>
+
+      <Form.Item
+        label="How many team?"
+        name="numOfTeams"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <InputNumber
+          id="numOfTeams"
+          min={1}
+          max={100}
+          disabled
+          defaultValue={1}
+        />
       </Form.Item>
 
       <Form.Item {...tailLayout}>
