@@ -3,8 +3,9 @@
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Form, Input, Button, Select, InputNumber, Radio } from 'antd';
+import { Form, Button, Select, InputNumber, Radio } from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio';
+import TextArea from 'antd/lib/input/TextArea';
 
 const layout = {
   labelCol: {
@@ -12,7 +13,7 @@ const layout = {
     span: 9,
   },
   wrapperCol: {
-    span: 8,
+    span: 10,
   },
 };
 const tailLayout = {
@@ -23,16 +24,26 @@ const tailLayout = {
 };
 
 const FormDiv = () => {
+  const [requiredProp, setRequiredProp] = useState(true);
   const [DisabledProp, setDisabledProp] = useState(true);
   const teamActivityOrNot = (e: RadioChangeEvent) => {
     if (e.target.value === 'true') {
       setDisabledProp(false);
     } else {
       setDisabledProp(true);
+      setRequiredProp(false);
     }
   };
-  const onFinish = (values: unknown) => {
-    console.log('Success:', values);
+  const onFinish = (values: JSON) => {
+    console.log(values);
+    const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(
+      JSON.stringify(values)
+    )}`;
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute('href', dataStr);
+    downloadAnchorNode.setAttribute('download', 'event_form.json');
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
   };
 
   const onFinishFailed = (errorInfo: unknown) => {
@@ -50,8 +61,8 @@ const FormDiv = () => {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Who Covers the first Meal"
-        name="firstMeal"
+        label="Who covered the first Meal"
+        name="Who payed for the first meal?"
         rules={[
           {
             required: true,
@@ -68,13 +79,8 @@ const FormDiv = () => {
       </Form.Item>
 
       <Form.Item
-        label="Who Covers the second Meal"
-        name="secondMeal"
-        rules={[
-          {
-            message: 'Please enter who is going to cover for the second meal?',
-          },
-        ]}
+        label="Who covered the second Meal"
+        name="Who payed for the second meal?"
       >
         <Select placeholder="Select an option">
           <Select.Option value="No meal">No Meal</Select.Option>
@@ -85,22 +91,25 @@ const FormDiv = () => {
       </Form.Item>
       <Form.Item
         label="Number of Students"
-        name="numOfStudents"
+        name="Number of Students Attended"
         rules={[
           {
             required: true,
+            message:
+              'Please enter the number of students that attended the event',
           },
         ]}
       >
-        <InputNumber />
+        <InputNumber min={1} max={100} defaultValue={1} />
       </Form.Item>
 
       <Form.Item
-        label="Is this a team activity?"
-        name="team"
+        label="Was this a team activity?"
+        name="Team activity"
         rules={[
           {
             required: true,
+            message: 'Choose one option!',
           },
         ]}
       >
@@ -112,10 +121,11 @@ const FormDiv = () => {
 
       <Form.Item
         label="How many team?"
-        name="numOfTeams"
+        name="Number of Teams"
         rules={[
           {
-            required: true,
+            required: requiredProp,
+            message: 'How many teams participated?',
           },
         ]}
       >
@@ -125,6 +135,19 @@ const FormDiv = () => {
           disabled={DisabledProp}
           defaultValue={1}
         />
+      </Form.Item>
+
+      <Form.Item
+        label="Rules for Entry"
+        name="Rules for entry"
+        rules={[
+          {
+            required: true,
+            message: 'What are the rules for entry?',
+          },
+        ]}
+      >
+        <TextArea rows={4} autoSize showCount allowClear />
       </Form.Item>
 
       <Form.Item {...tailLayout}>
