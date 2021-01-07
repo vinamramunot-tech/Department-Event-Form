@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -60,10 +60,10 @@ const FormDiv = () => {
         ]}
       >
         <Select placeholder="Select an option">
-          <Option value="noMeal">No Meal</Option>
-          <Option value="department">Department</Option>
-          <Option value="ACM">ACM</Option>
-          <Option value="self">Self</Option>
+          <Select.Option value="noMeal">No Meal</Select.Option>
+          <Select.Option value="department">Department</Select.Option>
+          <Select.Option value="ACM">ACM</Select.Option>
+          <Select.Option value="self">Self</Select.Option>
         </Select>
       </Form.Item>
 
@@ -77,10 +77,10 @@ const FormDiv = () => {
         ]}
       >
         <Select placeholder="Select an option">
-          <Option value="No meal">No Meal</Option>
-          <Option value="department">Department</Option>
-          <Option value="ACM">ACM</Option>
-          <Option value="self">Self</Option>
+          <Select.Option value="No meal">No Meal</Select.Option>
+          <Select.Option value="department">Department</Select.Option>
+          <Select.Option value="ACM">ACM</Select.Option>
+          <Select.Option value="self">Self</Select.Option>
         </Select>
       </Form.Item>
       <Form.Item
