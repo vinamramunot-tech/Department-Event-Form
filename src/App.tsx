@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Form, Button, Select, InputNumber, Radio } from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio';
 import TextArea from 'antd/lib/input/TextArea';
+import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 
 const layout = {
   labelCol: {
@@ -57,7 +58,7 @@ const FormDiv = () => {
     downloadAnchorNode.remove();
   };
 
-  const onFinishFailed = (errorInfo: unknown) => {
+  const onFinishFailed = (errorInfo: ValidateErrorEntity<JSON>) => {
     console.log('Failed:', errorInfo);
   };
 
