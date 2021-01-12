@@ -38,6 +38,7 @@ const RadioSelectForMeals = () => {
 const FormDiv = () => {
   const [requiredProp, setRequiredProp] = useState(true);
   const [DisabledProp, setDisabledProp] = useState(true);
+  const [AdvertisementProp, setAdvertisementProp] = useState(true);
   const teamActivityOrNot = (e: RadioChangeEvent) => {
     if (e.target.value === 'true') {
       setDisabledProp(false);
@@ -46,6 +47,15 @@ const FormDiv = () => {
       setRequiredProp(false);
     }
   };
+
+  const AdvertisementOrNot = (e: RadioChangeEvent) => {
+    if(e.target.value === 'true'){
+      setAdvertisementProp(false);
+    }    
+    else{
+      setAdvertisementProp(true);
+    }
+  }
   const onFinish = (values: JSON) => {
     console.log(values);
     const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(
@@ -169,11 +179,25 @@ const FormDiv = () => {
           },
         ]}
       >
-        <Radio.Group onChange={teamActivityOrNot}>
+        <Radio.Group onChange={AdvertisementOrNot}>
           <Radio value="true">true</Radio>
           <Radio value="false">false</Radio>
         </Radio.Group>
       </Form.Item>
+
+      <Form.Item
+        label="Advertisement Plans"
+        labelAlign="left"
+        name="Advertisement Plans"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <TextArea rows={4} disabled={AdvertisementProp} autoSize showCount allowClear />
+      </Form.Item>
+
 
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
