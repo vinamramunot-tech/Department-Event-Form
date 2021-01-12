@@ -10,7 +10,7 @@ import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 
 const layout = {
   labelCol: {
-    offset: 4,
+    offset: 0,
     span: 9,
   },
   wrapperCol: {
@@ -74,6 +74,7 @@ const FormDiv = () => {
     >
       <Form.Item
         label="Who covered the first Meal"
+        labelAlign="left"
         name="Who payed for the first meal?"
         rules={[
           {
@@ -87,12 +88,14 @@ const FormDiv = () => {
 
       <Form.Item
         label="Who covered the second Meal"
+        labelAlign="left"
         name="Who payed for the second meal?"
       >
         <RadioSelectForMeals />
       </Form.Item>
       <Form.Item
         label="Number of Students"
+        labelAlign="left"
         name="Number of Students Attended"
         rules={[
           {
@@ -107,6 +110,7 @@ const FormDiv = () => {
 
       <Form.Item
         label="Was this a team activity?"
+        labelAlign="left"
         name="Team activity"
         rules={[
           {
@@ -123,6 +127,7 @@ const FormDiv = () => {
 
       <Form.Item
         label="How many team?"
+        labelAlign="left"
         name="Number of Teams"
         rules={[
           {
@@ -141,6 +146,7 @@ const FormDiv = () => {
 
       <Form.Item
         label="Rules for Entry"
+        labelAlign="left"
         name="Rules for entry"
         rules={[
           {
@@ -150,6 +156,23 @@ const FormDiv = () => {
         ]}
       >
         <TextArea rows={4} autoSize showCount allowClear />
+      </Form.Item>
+
+      <Form.Item
+        label="Is there an advertisement plan?"
+        labelAlign="left"
+        name="Advertisement Plan"
+        rules={[
+          {
+            required: true,
+            message: 'Who is going to take the photos and advertise the event?',
+          },
+        ]}
+      >
+        <Radio.Group onChange={teamActivityOrNot}>
+          <Radio value="true">true</Radio>
+          <Radio value="false">false</Radio>
+        </Radio.Group>
       </Form.Item>
 
       <Form.Item {...tailLayout}>
