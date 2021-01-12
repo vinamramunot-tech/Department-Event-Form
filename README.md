@@ -15,3 +15,8 @@ yarn
 ```bash
 yarn start
 ```
+
+# Build the project
+```bash
+yarn build
+```
