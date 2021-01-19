@@ -18,5 +18,5 @@ yarn start
 
 # Build the project
 ```bash
-yarn build
+yarn package
 ```

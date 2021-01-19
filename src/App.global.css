@@ -1,4 +1,5 @@
-@import '~antd/dist/antd.css';
+/* @import '~antd/dist/antd.css'; */
+@import './antd.min.css';
 
 body {
   background-color: #F5F5F5;

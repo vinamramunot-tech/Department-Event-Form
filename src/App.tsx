@@ -51,13 +51,12 @@ const FormDiv = () => {
   };
 
   const AdvertisementOrNot = (e: RadioChangeEvent) => {
-    if(e.target.value === 'true'){
+    if (e.target.value === 'true') {
       setAdvertisementProp(false);
-    }    
-    else{
+    } else {
       setAdvertisementProp(true);
     }
-  }
+  };
   const onFinish = (values: JSON) => {
     console.log(values);
     const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(
@@ -238,7 +237,13 @@ const FormDiv = () => {
           },
         ]}
       >
-        <TextArea rows={4} disabled={AdvertisementProp} autoSize showCount allowClear />
+        <TextArea
+          rows={4}
+          disabled={AdvertisementProp}
+          autoSize
+          showCount
+          allowClear
+        />
       </Form.Item>
 
 
