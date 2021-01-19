@@ -8,8 +8,6 @@ import { RadioChangeEvent } from 'antd/lib/radio';
 import TextArea from 'antd/lib/input/TextArea';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 
-
-
 const layout = {
   labelCol: {
     offset: 0,
@@ -102,7 +100,7 @@ const FormDiv = () => {
         labelAlign="left"
         name="Price of First Meal"
       >
-        <InputNumber min={0.00} max={50000.00} defaultValue={0.00} />
+        <InputNumber min={0.0} max={50000.0} defaultValue={0.0} />
       </Form.Item>
 
       <Form.Item
@@ -118,7 +116,7 @@ const FormDiv = () => {
         labelAlign="left"
         name="Price of Second Meal"
       >
-        <InputNumber min={0.00} max={50000.00} defaultValue={0.00} />
+        <InputNumber min={0.0} max={50000.0} defaultValue={0.0} />
       </Form.Item>
 
       <Form.Item
@@ -128,14 +126,13 @@ const FormDiv = () => {
         rules={[
           {
             required: true,
-            message:
-              'Please enter the cost to participate',
+            message: 'Please enter the cost to participate',
           },
         ]}
       >
-        <InputNumber min={0.00} max={50000} defaultValue={0.00} />
+        <InputNumber min={0.0} max={50000} defaultValue={0.0} />
       </Form.Item>
-      
+
       <Form.Item
         label="Number of Students"
         labelAlign="left"
@@ -151,13 +148,8 @@ const FormDiv = () => {
         <InputNumber min={1} max={100} defaultValue={1} />
       </Form.Item>
 
-      <Form.Item
-        label="Total Cost"
-        labelAlign="left"
-        name="Total Cost"
-       
-      >
-        <InputNumber min={0.00} max={50000} defaultValue={0.00} />
+      <Form.Item label="Total Cost" labelAlign="left" name="Total Cost">
+        <InputNumber min={0.0} max={50000} defaultValue={0.0} />
       </Form.Item>
 
       <Form.Item
@@ -245,7 +237,6 @@ const FormDiv = () => {
           allowClear
         />
       </Form.Item>
-
 
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
