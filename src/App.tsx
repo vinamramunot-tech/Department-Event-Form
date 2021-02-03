@@ -3,7 +3,17 @@
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Form, Button, Select, InputNumber, Radio } from 'antd';
+import {
+  Form,
+  Button,
+  InputNumber,
+  Radio,
+  Space,
+  DatePicker,
+  Select,
+  Divider,
+  Input,
+} from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio';
 import TextArea from 'antd/lib/input/TextArea';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
@@ -36,6 +46,7 @@ const RadioSelectForMeals = () => {
 };
 
 const FormDiv = () => {
+  const { RangePicker } = DatePicker;
   const [requiredProp, setRequiredProp] = useState(true);
   const [DisabledProp, setDisabledProp] = useState(true);
   const [AdvertisementProp, setAdvertisementProp] = useState(true);
@@ -149,7 +160,41 @@ const FormDiv = () => {
       </Form.Item>
 
       <Form.Item label="Total Cost" labelAlign="left" name="Total Cost">
-        <InputNumber min={0.0} max={50000} defaultValue={0.0} />
+        <InputNumber min={0.0} max={50000} defaultValue={0.0} disabled />
+      </Form.Item>
+
+      <Form.Item
+        label="Room"
+        labelAlign="left"
+        name="Venue"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter at least one room',
+            type: 'array',
+          },
+        ]}
+      >
+        <Select mode="multiple" placeholder="Please select the rooms">
+          <Select.Option value="red">ETCS 115</Select.Option>
+          <Select.Option value="green">ETCS 118</Select.Option>
+        </Select>
+      </Form.Item>
+
+      <Form.Item
+        label="Schedule"
+        labelAlign="left"
+        name="Date"
+        rules={[
+          {
+            required: true,
+            message: 'Please select the schedule of the event!',
+          },
+        ]}
+      >
+        <Space direction="vertical" size={12}>
+          <RangePicker showTime />
+        </Space>
       </Form.Item>
 
       <Form.Item
